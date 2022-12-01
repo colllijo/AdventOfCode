@@ -2238,27 +2238,66 @@ public class Main {
             "7726\n" +
             "1760";
 
+    public static int fMaxCals = 0;
+    public static int sMaxCals = 0;
+    public static int tMaxClas = 0;
+
     public static void main(String[] args) {
-        int elves = 0;
-        ArrayList<Integer> calsCarriedByElve = new ArrayList<>();
         String[] lines = input.split("\n");
 
-        int maxCals = 0;
 
         int currentElvesCals = 0;
 
-        for(int i = 0; i < lines.length; i++) {
-         if(lines[i] == "") {
-             if(currentElvesCals > maxCals) {
-                 maxCals = currentElvesCals;
-             }
-             currentElvesCals = 0;
-             elves++;
-         } else {
-             currentElvesCals += Integer.parseInt(lines[i]);
-         }
+        for (int i = 0; i < lines.length; i++) {
+            if (lines[i] == "") {
+                System.out.println(currentElvesCals);
+                if (currentElvesCals > fMaxCals) {
+                    setfMaxCals(currentElvesCals);
+                } else if (currentElvesCals > sMaxCals) {
+                    setsMaxCals(currentElvesCals);
+                } else if (currentElvesCals > tMaxClas) {
+                    settMaxClas(currentElvesCals);
+                }
+                currentElvesCals = 0;
+            } else {
+                currentElvesCals += Integer.parseInt(lines[i]);
+            }
         }
 
-        System.out.println(maxCals);
+        System.out.println(currentElvesCals);
+        if (currentElvesCals > fMaxCals) {
+            setfMaxCals(currentElvesCals);
+        } else if (currentElvesCals > sMaxCals) {
+            setsMaxCals(currentElvesCals);
+        } else if (currentElvesCals > tMaxClas) {
+            settMaxClas(currentElvesCals);
+        }
+        currentElvesCals = 0;
+
+        System.out.println();
+        System.out.println(fMaxCals);
+        System.out.println(sMaxCals);
+        System.out.println(tMaxClas);
+        System.out.println();
+
+        System.out.println(fMaxCals + sMaxCals + tMaxClas);
+    }
+
+    public static void setfMaxCals(int newCals) {
+        if (fMaxCals > sMaxCals) {
+            setsMaxCals(fMaxCals);
+        }
+        fMaxCals = newCals;
+    }
+
+    public static void setsMaxCals(int newCals) {
+        if (sMaxCals > tMaxClas) {
+            settMaxClas(sMaxCals);
+        }
+        sMaxCals = newCals;
+    }
+
+    public static void settMaxClas(int newCals) {
+        tMaxClas = newCals;
     }
 }
