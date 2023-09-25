@@ -50,12 +50,12 @@ AoCDelimiter getCommandlineOptions(int argc, char *argv[])
 		}
 		catch (const invalid_argument &exception)
 		{
-			fprintf(stderr, "\033[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.\033[0m", opt);
+			fprintf(stderr, "[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
 			exit(1);
 		}
 		catch (const out_of_range &exception)
 		{
-			fprintf(stderr, "\033[31mOut of range: Received invalid argument for parameter -%c please make sure to supply an integer number.\033[0m", opt);
+			fprintf(stderr, "[31mOut of range: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
 			exit(1);
 		}
 	}
@@ -63,17 +63,17 @@ AoCDelimiter getCommandlineOptions(int argc, char *argv[])
 	// Check that the commandline options are in the correct ranges
 	if (aocDelimiter.year != -1 && aocDelimiter.year < 2015)
 	{
-		fprintf(stderr, "\033[33mNo Advent of Code before 2015.\033[0m");
+		fprintf(stderr, "[33mNo Advent of Code before 2015.[0m");
 		exit(1);
 	}
 	else if (aocDelimiter.day != -1 && (aocDelimiter.day < 1 || aocDelimiter.day > 25))
 	{
-		fprintf(stderr, "\033[31mInvalid argument for day please only use the days from 1 to 25.\033[0m");
+		fprintf(stderr, "[31mInvalid argument for day please only use the days from 1 to 25.[0m");
 		exit(1);
 	}
 	else if (aocDelimiter.part != -1 && (aocDelimiter.part < 1 || aocDelimiter.part > 2))
 	{
-		fprintf(stderr, "\033[31mInvalid argument for part please only use 1 or 2.\033[0m");
+		fprintf(stderr, "[31mInvalid argument for part please only use 1 or 2.[0m");
 		exit(1);
 	}
 
@@ -113,3 +113,4 @@ void setDays2015(AoCYears *years)
 	years->setDay(2015, 24, new Day24_2015());
 	years->setDay(2015, 25, new Day25_2015());
 }
+

@@ -1,0 +1,9 @@
+# IDE folders/files
+.idea
+.vscode
+
+# Builds
+build
+
+# Personal Input
+input/*

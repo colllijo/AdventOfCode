@@ -1,8 +1,6 @@
 #include "day4.h"
 
-#include <regex>
-#include <openssl/md5.h>
-#include <iomanip>
+#include <thread>
 
 Day4_2015::Day4_2015():AoCDay(2015, 4)
 {
@@ -10,49 +8,84 @@ Day4_2015::Day4_2015():AoCDay(2015, 4)
 
 Day4_2015::~Day4_2015() = default;
 
-std::string md5(const std::string &str)
+string Day4_2015::part1(const string &input)
 {
-    unsigned char hash[MD5_DIGEST_LENGTH];
-
-    MD5_CTX  md5;
-    MD5_Init(&md5);
-    MD5_Update(&md5, str.c_str(), str.size());
-    MD5_Final(hash, &md5);
-
-    std::stringstream stream;
-
-    for (unsigned char c : hash)
+    static unsigned int result = 0;
+    auto hasher = [](const string &input, unsigned int start, int increment)
     {
-        stream << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(c);
-    }
+        unsigned int value = start;
 
-    return stream.str();
+        string hash = aoc_crypto::md5(input.substr(0, input.size() - 1) + std::to_string(value));
+        while (!hash.starts_with("00000") && result == 0)
+        {
+            value += increment;
+            hash = aoc_crypto::md5(input.substr(0, input.size() - 1) + std::to_string(value));
+        }
+
+        if (result == 0)
+        {
+            result = value;
+        }
+    };
+
+     std::thread hashing_thread_1(hasher, input, 1, 8);
+     std::thread hashing_thread_2(hasher, input, 2, 8);
+     std::thread hashing_thread_3(hasher, input, 3, 8);
+     std::thread hashing_thread_4(hasher, input, 4, 8);
+     std::thread hashing_thread_5(hasher, input, 5, 8);
+     std::thread hashing_thread_6(hasher, input, 6, 8);
+     std::thread hashing_thread_7(hasher, input, 7, 8);
+     std::thread hashing_thread_8(hasher, input, 8, 8);
+
+     hashing_thread_1.join();
+     hashing_thread_2.join();
+     hashing_thread_3.join();
+     hashing_thread_4.join();
+     hashing_thread_5.join();
+     hashing_thread_6.join();
+     hashing_thread_7.join();
+     hashing_thread_8.join();
+
+    return std::to_string(result);
 }
 
-std::string Day4_2015::part1(std::string* input)
+string Day4_2015::part2(const string &input)
 {
-    unsigned int value = 1;
-    std::string hash = md5(input->substr(0, input->size() - 1) + std::to_string(value));
-
-    while (!std::regex_match(hash, std::regex("[0]{5,}.*")))
+    static unsigned int result = 0;
+    auto hasher = [](const string &input, unsigned int start, int increment)
     {
-        value++;
-        hash = md5(input->substr(0, input->size() - 1) + std::to_string(value));
-    }
+        unsigned int value = start;
 
-    return std::to_string(value);
-}
+        string hash = aoc_crypto::md5(input.substr(0, input.size() - 1) + std::to_string(value));
+        while (!hash.starts_with("000000") && result == 0)
+        {
+            value += increment;
+            hash = aoc_crypto::md5(input.substr(0, input.size() - 1) + std::to_string(value));
+        }
 
-std::string Day4_2015::part2(std::string* input)
-{
-    unsigned int value = 1;
-    std::string hash = md5(input->substr(0, input->size() - 1) + std::to_string(value));
+        if (result == 0)
+        {
+            result = value;
+        }
+    };
 
-    while (!std::regex_match(hash, std::regex("[0]{6,}.*")))
-    {
-        value++;
-        hash = md5(input->substr(0, input->size() - 1) + std::to_string(value));
-    }
+    std::thread hashing_thread_1(hasher, input, 1, 8);
+    std::thread hashing_thread_2(hasher, input, 2, 8);
+    std::thread hashing_thread_3(hasher, input, 3, 8);
+    std::thread hashing_thread_4(hasher, input, 4, 8);
+    std::thread hashing_thread_5(hasher, input, 5, 8);
+    std::thread hashing_thread_6(hasher, input, 6, 8);
+    std::thread hashing_thread_7(hasher, input, 7, 8);
+    std::thread hashing_thread_8(hasher, input, 8, 8);
 
-    return std::to_string(value);
+    hashing_thread_1.join();
+    hashing_thread_2.join();
+    hashing_thread_3.join();
+    hashing_thread_4.join();
+    hashing_thread_5.join();
+    hashing_thread_6.join();
+    hashing_thread_7.join();
+    hashing_thread_8.join();
+
+    return std::to_string(result);
 }

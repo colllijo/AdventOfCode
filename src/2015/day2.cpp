@@ -1,19 +1,16 @@
 #include "day2.h"
 
-#include <sstream>
-#include <vector>
-
 Day2_2015::Day2_2015():AoCDay(2015, 2)
 {
 }
 
 Day2_2015::~Day2_2015() = default;
 
-std::string Day2_2015::part1(std::string* input)
+string Day2_2015::part1(const string &input)
 {
     unsigned int squareFeetOfPaper = 0;
 
-    std::stringstream stream (*input);
+    std::stringstream stream (input);
     std::string present;
     while (std::getline(stream, present, '\n'))
     {
@@ -39,12 +36,12 @@ std::string Day2_2015::part1(std::string* input)
     return std::to_string(squareFeetOfPaper);
 }
 
-std::string Day2_2015::part2(std::string* input)
+string Day2_2015::part2(const string &input)
 {
 
     unsigned int lengthOfRibbon = 0;
 
-    std::stringstream stream (*input);
+    std::stringstream stream (input);
     std::string present;
     while (std::getline(stream, present, '\n'))
     {

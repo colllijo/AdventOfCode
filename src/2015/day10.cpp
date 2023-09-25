@@ -6,12 +6,49 @@ Day10_2015::Day10_2015():AoCDay(2015, 10)
 
 Day10_2015::~Day10_2015() = default;
 
-std::string Day10_2015::part1(std::string* input)
+string lookAndSay(const string &input)
 {
-    return AoCDay::part1(input);
+    string result;
+
+    int repetitions = 0;
+    char currentDigit;
+
+    for (const auto &c : input)
+    {
+        if (!isdigit(c))
+            break;
+
+        if (currentDigit != c)
+        {
+            if (repetitions != 0)
+                result += to_string(repetitions) + currentDigit;
+
+            currentDigit = c;
+            repetitions = 1;
+        }
+        else
+            repetitions++;
+    }
+
+    return result + to_string(repetitions) + currentDigit;
 }
 
-std::string Day10_2015::part2(std::string* input)
+string Day10_2015::part1(const string &input)
 {
-    return AoCDay::part2(input);
+    string result = input;
+
+    for (int i = 0; i < 40; i++)
+        result = lookAndSay(result);
+
+    return to_string(result.length());
+}
+
+string Day10_2015::part2(const string &input)
+{
+    string result = input;
+
+    for (int i = 0; i < 50; i++)
+        result = lookAndSay(result);
+
+    return to_string(result.length());
 }

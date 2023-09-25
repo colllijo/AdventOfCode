@@ -1,10 +1,8 @@
 #include "aoc_runner.h"
 
-AoCRunner::AoCRunner(const function<void(AoCYears*)>& setYears): aocYears(new AoCYears())
+AoCRunner::AoCRunner(const function<void(AoCYears*)>& setYears): aocYears(new AoCYears()), aocInput(new AoCInput())
 {
     setYears(aocYears);
-
-    aocInput = new AoCInput();
 }
 
 AoCRunner::~AoCRunner()
@@ -29,14 +27,14 @@ void AoCRunner::run(AoCDelimiter* delimiter)
         switch (delimiter->part)
         {
             case 1:
-                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(&input));
+                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(input));
                 break;
             case 2:
-                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(&input));
+                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(input));
                 break;
             default:
-                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(&input));
-                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(&input));
+                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(input));
+                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(input));
                 break;
         }
     }

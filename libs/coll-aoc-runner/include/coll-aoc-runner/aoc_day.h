@@ -2,7 +2,15 @@
 #define COLL_AOC_RUNNER_AOC_DAY_H
 
 #include <iostream>
+#include <map>
 #include <string>
+#include <sstream>
+#include <vector>
+
+#include "crypto/aoc_md5.h"
+#include "string/aoc_string.h"
+
+using namespace std;
 
 class AoCDay {
 protected:
@@ -12,15 +20,11 @@ public:
     AoCDay(int year, int day);
     ~AoCDay();
 
+    [[nodiscard]] int getYear() const { return year; }
+    [[nodiscard]] int getDay() const { return day; }
 
-    void setYear(const int value) { year = value; }
-    int getYear() const { return year; }
-
-    void setDay(const int value) { day = value; }
-    int getDay() const { return day; }
-
-    virtual std::string part1(std::string* input);
-    virtual std::string part2(std::string* input);
+    virtual std::string part1(const string &input);
+    virtual std::string part2(const string &input);
 };
 
 #endif

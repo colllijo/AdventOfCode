@@ -13,7 +13,7 @@ using namespace std;
 
 class AoCRunner {
 private:
-    AoCYears* aocYears;
+    AoCYears* aocYears{};
     AoCInput* aocInput;
 
     map<int, AoCDay*> getDaysToRun(AoCDelimiter* delimiter);

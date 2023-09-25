@@ -1,9 +1,6 @@
 #include "aoc_input.h"
 
-AoCInput::AoCInput()
-{
-    loadAuthCookie();
-}
+AoCInput::AoCInput() = default;
 
 AoCInput::~AoCInput() = default;
 
@@ -14,6 +11,7 @@ string AoCInput::getInput(int year, int day)
     ifstream inputFile ("input/" + to_string(year) + "/day" + to_string(day) + ".txt");
     if (!inputFile)
     {
+        loadAuthCookie();
         downloadInput(year, day);
         inputFile.open("input/" + to_string(year) + "/day" + to_string(day) + ".txt");
     }

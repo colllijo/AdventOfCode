@@ -8,8 +8,8 @@ public:
     Day22_2015();
     ~Day22_2015();
 
-    std::string part1(std::string* input) override;
-    std::string part2(std::string* input) override;
+    string part1(const string &input) override;
+    string part2(const string &input) override;
 };
 
 #endif

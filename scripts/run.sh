@@ -17,5 +17,7 @@ do
     esac
 done
 
+set -e
+
 ./scripts/build.sh
-build/COLLAdventOfCode $flags
+time build/COLLAdventOfCode $flags

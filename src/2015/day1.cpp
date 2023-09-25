@@ -6,11 +6,11 @@ Day1_2015::Day1_2015():AoCDay(2015, 1)
 
 Day1_2015::~Day1_2015() = default;
 
-std::string Day1_2015::part1(std::string* input)
+string Day1_2015::part1(const string &input)
 {
     int floor = 0;
 
-    for (auto &c : *input)
+    for (auto &c : input)
     {
         switch (c)
         {
@@ -27,11 +27,11 @@ std::string Day1_2015::part1(std::string* input)
     return std::to_string(floor);
 }
 
-std::string Day1_2015::part2(std::string* input)
+string Day1_2015::part2(const string &input)
 {
     int floor = 0;
     int charIndex = 0;
-    for (auto &c : *input)
+    for (auto &c : input)
     {
         charIndex++;
 

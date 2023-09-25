@@ -1,15 +1,12 @@
 #include "day3.h"
 
-#include <map>
-#include <vector>
-
 Day3_2015::Day3_2015():AoCDay(2015, 3)
 {
 }
 
 Day3_2015::~Day3_2015() = default;
 
-std::string Day3_2015::part1(std::string* input)
+string Day3_2015::part1(const string &input)
 {
     std::map<std::tuple<int, int>, bool> map;
     int x = 0;
@@ -17,7 +14,7 @@ std::string Day3_2015::part1(std::string* input)
 
     // Starting location
     map[std::tuple(x, y)] = true;
-    for (auto &c : *input)
+    for (auto &c : input)
     {
         switch (c)
         {
@@ -43,7 +40,7 @@ std::string Day3_2015::part1(std::string* input)
     return std::to_string(map.size());
 }
 
-std::string Day3_2015::part2(std::string* input)
+string Day3_2015::part2(const string &input)
 {
     std::map<std::tuple<int, int>, bool> map;
     int santaX = 0;
@@ -55,7 +52,7 @@ std::string Day3_2015::part2(std::string* input)
 
     // Starting location
     map[std::tuple(santaX, santaY)] = true;
-    for (auto &c : *input)
+    for (auto &c : input)
     {
         switch (c)
         {
