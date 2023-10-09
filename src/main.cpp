@@ -1,6 +1,8 @@
+#include <getopt.h>
 #include <iostream>
-#include <unistd.h>
+
 #include <coll-aoc-runner/aoc_runner.h>
+#include <coll-aoc-runner/string/aoc_string.h>
 
 // Include all the days
 #include "2015/days.h"
@@ -27,37 +29,53 @@ AoCDelimiter getCommandlineOptions(int argc, char *argv[])
 {
 	AoCDelimiter aocDelimiter;
 
+    const struct option longopts[] = {
+            {"version", no_argument, nullptr, 'v'},
+            {"year", required_argument, nullptr, 'y'},
+            {"day", required_argument, nullptr, 'd'},
+            {"part", required_argument, nullptr, 'p'},
+            {nullptr, 0, nullptr, 0},
+    };
+
 	// Retrieve commandline options given to the program
 	int opt;
-	while ((opt = getopt(argc, argv, "y:d:p:")) != -1)
+	while ((opt = getopt_long(argc, argv, "vy:d:p:", longopts, nullptr)) != -1)
 	{
-		try
-		{
-			switch (opt)
-			{
-				case 'y':
-					aocDelimiter.year = stoi(optarg);
-					break;
-				case 'd':
-					aocDelimiter.day = stoi(optarg);
-					break;
-				case 'p':
-					aocDelimiter.part = stoi(optarg);
-					break;
-				default:
-					break;
-			}
-		}
-		catch (const invalid_argument &exception)
-		{
-			fprintf(stderr, "[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
-			exit(1);
-		}
-		catch (const out_of_range &exception)
-		{
-			fprintf(stderr, "[31mOut of range: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
-			exit(1);
-		}
+        switch (opt)
+        {
+            case 'v':
+                printf("coll advent-of-code runner: 0.1.0\n");
+                exit(0);
+            case 'y':
+                if (aoc_string::isNumber(optarg))
+                    aocDelimiter.year = stoi(optarg);
+                else
+                {
+                    fprintf(stderr, "[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
+                    exit(1);
+                }
+                break;
+            case 'd':
+                if (aoc_string::isNumber(optarg))
+                    aocDelimiter.day = stoi(optarg);
+                else
+                {
+                    fprintf(stderr, "[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
+                    exit(1);
+                }
+                break;
+            case 'p':
+                if (aoc_string::isNumber(optarg))
+                    aocDelimiter.part = stoi(optarg);
+                else
+                {
+                    fprintf(stderr, "[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
+                    exit(1);
+                }
+                break;
+            default:
+                break;
+        }
 	}
 
 	// Check that the commandline options are in the correct ranges

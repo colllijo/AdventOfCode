@@ -6,18 +6,7 @@ if [[ ! ( "$0" =~ (\./)?scripts/run.sh ) ]]; then
 	exit 1
 fi
 
-flags=""
-
-while getopts y:d:p: flag
-do
-    case "${flag}" in
-        y) flags+=" -y ${OPTARG}";;
-        d) flags+=" -d ${OPTARG}";;
-        p) flags+=" -p ${OPTARG}";;
-    esac
-done
-
 set -e
 
 ./scripts/build.sh
-time build/COLLAdventOfCode $flags
+time build/COLLAdventOfCode "$@"
