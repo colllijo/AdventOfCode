@@ -6,7 +6,7 @@ if [[ ! ( "$0" =~ (\./)?scripts/run.sh ) ]]; then
 	exit 1
 fi
 
-set -e
-
 ./scripts/build.sh
-time build/COLLAdventOfCode "$@"
+if [[ "$?" == "0" ]]; then
+	time build/COLLAdventOfCode "$@"
+fi

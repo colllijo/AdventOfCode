@@ -8,4 +8,9 @@ fi
 
 cd build
 make
-cd ~-
+if [[ "$?" == "0" ]]; then
+	cd ~-
+else
+	cd ~-
+	exit 1
+fi

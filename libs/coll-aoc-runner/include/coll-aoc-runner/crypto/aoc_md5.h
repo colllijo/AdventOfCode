@@ -4,28 +4,29 @@
 #pragma once
 
 #include <openssl/md5.h>
+#include <openssl/evp.h>
 #include <iomanip>
 #include <string>
 
 namespace aoc_crypto
 {
-    inline static std::string md5(const std::string &str)
+    inline static std::string md5(const std::string& content)
     {
-        unsigned char hash[MD5_DIGEST_LENGTH];
+        EVP_MD_CTX*   context = EVP_MD_CTX_new();
+        const EVP_MD* md = EVP_md5();
+        unsigned char md_value[EVP_MAX_MD_SIZE];
+        unsigned int  md_len;
+        std::string   output;
 
-        MD5_CTX  md5;
-        MD5_Init(&md5);
-        MD5_Update(&md5, str.c_str(), str.size());
-        MD5_Final(hash, &md5);
+        EVP_DigestInit_ex2(context, md, NULL);
+        EVP_DigestUpdate(context, content.c_str(), content.length());
+        EVP_DigestFinal_ex(context, md_value, &md_len);
+        EVP_MD_CTX_free(context);
 
-        std::stringstream stream;
-
-        for (unsigned char c : hash)
-        {
-            stream << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(c);
-        }
-
-        return stream.str();
+        output.resize(md_len * 2);
+        for (unsigned int i = 0 ; i < md_len ; ++i)
+            std::sprintf(&output[i * 2], "%02x", md_value[i]);
+        return output;
     }
 }
 
