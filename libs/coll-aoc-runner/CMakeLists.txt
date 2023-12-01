@@ -14,6 +14,7 @@ set(LIBRARY_HEADERS
         ${LIBRARY_HEADERS_DIR}/aoc_runner.h
         ${LIBRARY_HEADERS_DIR}/crypto/aoc_md5.h
         ${LIBRARY_HEADERS_DIR}/string/aoc_string.h
+        ${LIBRARY_HEADERS_DIR}/structures/aoc_2d_grid.h
 )
 set(LIBRARY_SOURCE_DIR src)
 set(LIBRARY_SOURCE

@@ -9,6 +9,7 @@
 
 #include "crypto/aoc_md5.h"
 #include "string/aoc_string.h"
+#include "structures/aoc_2d_grid.h"
 
 using namespace std;
 
