@@ -1,17 +1,18 @@
 #include <getopt.h>
-#include <iostream>
 
 #include <coll-aoc-runner/aoc_runner.h>
 #include <coll-aoc-runner/string/aoc_string.h>
 
 // Include all the days
 #include "2015/days.h"
+#include "2023/days.h"
 
 using namespace std;
 
 void setYears(AoCYears *years);
 // SetDays Functions
 void setDays2015(AoCYears *years);
+void setDays2023(AoCYears *years);
 
 AoCDelimiter getCommandlineOptions(int argc, char *argv[]);
 
@@ -29,53 +30,53 @@ AoCDelimiter getCommandlineOptions(int argc, char *argv[])
 {
 	AoCDelimiter aocDelimiter;
 
-    const struct option longopts[] = {
-            {"version", no_argument, nullptr, 'v'},
-            {"year", required_argument, nullptr, 'y'},
-            {"day", required_argument, nullptr, 'd'},
-            {"part", required_argument, nullptr, 'p'},
-            {nullptr, 0, nullptr, 0},
-    };
+	const struct option longopts[] = {
+			{"version", no_argument, nullptr, 'v'},
+			{"year", required_argument, nullptr, 'y'},
+			{"day", required_argument, nullptr, 'd'},
+			{"part", required_argument, nullptr, 'p'},
+			{nullptr, 0, nullptr, 0},
+	};
 
 	// Retrieve commandline options given to the program
 	int opt;
 	while ((opt = getopt_long(argc, argv, "vy:d:p:", longopts, nullptr)) != -1)
 	{
-        switch (opt)
-        {
-            case 'v':
-                printf("coll advent-of-code runner: 0.1.0\n");
-                exit(0);
-            case 'y':
-                if (aoc_string::isNumber(optarg))
-                    aocDelimiter.year = stoi(optarg);
-                else
-                {
-                    fprintf(stderr, "[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
-                    exit(1);
-                }
-                break;
-            case 'd':
-                if (aoc_string::isNumber(optarg))
-                    aocDelimiter.day = stoi(optarg);
-                else
-                {
-                    fprintf(stderr, "[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
-                    exit(1);
-                }
-                break;
-            case 'p':
-                if (aoc_string::isNumber(optarg))
-                    aocDelimiter.part = stoi(optarg);
-                else
-                {
-                    fprintf(stderr, "[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
-                    exit(1);
-                }
-                break;
-            default:
-                break;
-        }
+		switch (opt)
+		{
+			case 'v':
+				printf("coll advent-of-code runner: 0.1.0");
+				exit(0);
+			case 'y':
+				if (aoc_string::isNumber(optarg))
+					aocDelimiter.year = stoi(optarg);
+				else
+				{
+					fprintf(stderr, "[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
+					exit(1);
+				}
+				break;
+			case 'd':
+				if (aoc_string::isNumber(optarg))
+					aocDelimiter.day = stoi(optarg);
+				else
+				{
+					fprintf(stderr, "[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
+					exit(1);
+				}
+				break;
+			case 'p':
+				if (aoc_string::isNumber(optarg))
+					aocDelimiter.part = stoi(optarg);
+				else
+				{
+					fprintf(stderr, "[31mInvalid argument: Received invalid argument for parameter -%c please make sure to supply an integer number.[0m", opt);
+					exit(1);
+				}
+				break;
+			default:
+				break;
+		}
 	}
 
 	// Check that the commandline options are in the correct ranges
@@ -101,6 +102,7 @@ AoCDelimiter getCommandlineOptions(int argc, char *argv[])
 void setYears(AoCYears *years)
 {
 	setDays2015(years);
+	setDays2023(years);
 }
 
 void setDays2015(AoCYears *years)
@@ -132,3 +134,32 @@ void setDays2015(AoCYears *years)
 	years->setDay(2015, 25, new Day25_2015());
 }
 
+
+void setDays2023(AoCYears *years)
+{
+	years->setDay(2023, 1, new Day1_2023);
+	years->setDay(2023, 2, new Day2_2023);
+	years->setDay(2023, 3, new Day3_2023);
+	years->setDay(2023, 4, new Day4_2023);
+	years->setDay(2023, 5, new Day5_2023);
+	years->setDay(2023, 6, new Day6_2023);
+	years->setDay(2023, 7, new Day7_2023);
+	years->setDay(2023, 8, new Day8_2023);
+	years->setDay(2023, 9, new Day9_2023);
+	years->setDay(2023, 10, new Day10_2023);
+	years->setDay(2023, 11, new Day11_2023);
+	years->setDay(2023, 12, new Day12_2023);
+	years->setDay(2023, 13, new Day13_2023);
+	years->setDay(2023, 14, new Day14_2023);
+	years->setDay(2023, 15, new Day15_2023);
+	years->setDay(2023, 16, new Day16_2023);
+	years->setDay(2023, 17, new Day17_2023);
+	years->setDay(2023, 18, new Day18_2023);
+	years->setDay(2023, 19, new Day19_2023);
+	years->setDay(2023, 20, new Day20_2023);
+	years->setDay(2023, 21, new Day21_2023);
+	years->setDay(2023, 22, new Day22_2023);
+	years->setDay(2023, 23, new Day23_2023);
+	years->setDay(2023, 24, new Day24_2023);
+	years->setDay(2023, 25, new Day25_2023);
+}

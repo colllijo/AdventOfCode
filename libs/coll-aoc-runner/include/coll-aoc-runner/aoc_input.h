@@ -1,9 +1,11 @@
 #ifndef COLL_AOC_RUNNER_AOC_INPUT_H
 #define COLL_AOC_RUNNER_AOC_INPUT_H
 
+#include <filesystem>
 #include <fstream>
 #include <streambuf>
 #include <string>
+#include <sys/stat.h>
 #include <regex>
 
 #include <curlpp/cURLpp.hpp>

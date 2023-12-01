@@ -1,6 +1,11 @@
 #include "aoc_input.h"
 
-AoCInput::AoCInput() = default;
+AoCInput::AoCInput()
+{
+	// Make sure the input directory exists
+	if (!filesystem::is_directory("input"))
+		filesystem::create_directory("input");
+};
 
 AoCInput::~AoCInput() = default;
 
@@ -30,8 +35,13 @@ string AoCInput::getInput(int year, int day)
 
 void AoCInput::loadAuthCookie()
 {
-    string cookie = std::getenv("CAOC_AUTH_COOKIE");
-    if (!regex_match(cookie, regex("[0-9a-f]{128}")))
+    char *cookie = std::getenv("CAOC_AUTH_COOKIE");
+	if (cookie == nullptr)
+	{
+		fprintf(stderr, "\033[31mAuthorisation cookie not set.\nPlease set the `CAOC_AUTH_COOKIE` environment variable.\033[0m\n");
+		exit(1);
+	}
+    else if (!regex_match(cookie, regex("[0-9a-f]{128}")))
     {
         fprintf(stderr, "\033[31mInvalid authorisation cookie\033[0m\n");
         exit(1);
@@ -42,6 +52,10 @@ void AoCInput::loadAuthCookie()
 
 void AoCInput::downloadInput(int year, int day)
 {
+	// Make sure the directory for the year exists
+	if (!filesystem::is_directory("input/" + to_string(year)))
+		filesystem::create_directory("input/" + to_string(year));
+
     string url = "https://adventofcode.com/" + to_string(year) + "/day/" + to_string(day) + "/input";
     string filename = "input/" + to_string(year) + "/day" + to_string(day) + ".txt";
 
