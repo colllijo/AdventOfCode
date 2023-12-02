@@ -64,29 +64,20 @@ void AoCInput::downloadInput(int year, int day)
         curlpp::Cleanup cleaner;
         curlpp::Easy request;
 
-        curlpp::options::WriteFunctionCurlFunction writeFunction(
-            [](char* ptr, size_t size, size_t nmemb, void *f)
-            {
-                FILE *file = (FILE *)f;
-                return fwrite(ptr, size, nmemb, file);
-            }
-        );
-
-        FILE *file = fopen(filename.c_str(), "wb");
-        if (file == nullptr)
-        {
-            fprintf(stderr, "%s/n", strerror(errno));
+		ofstream file(filename.c_str(), ios::binary | ios::out);
+		if (!file)
+		{
+            fprintf(stderr, "Could not open file to write input/n");
             exit(1);
-        }
+		}
 
-        curlpp::OptionTrait<void *, CURLOPT_WRITEDATA> input(file);
-
-        request.setOpt(writeFunction);
-        request.setOpt(input);
+		request.setOpt(new curlpp::options::WriteStream(&file));
 
         request.setOpt(new curlpp::options::Url(url));
         request.setOpt(new curlpp::options::Cookie("session=" + authCookie));
         request.perform();
+
+		file.close();
     }
     catch (curlpp::LogicError & exception)
     {
