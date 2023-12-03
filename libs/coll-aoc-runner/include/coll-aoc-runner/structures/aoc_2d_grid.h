@@ -48,9 +48,9 @@ public:
     {
         vector<T> adjacentCells;
 
-        for (int dy = (y > 0 ? -1 : 0); dy <= (y < height - 1 ? 1 : 0); ++dy)
-            for (int dx = (x > 0 ? -1 : 0); dx <= (x < width - 1 ? 1 : 0); ++dx)
-                if (dx != 0 || dy != 0)
+        for (int dy = -1; dy <= 1; dy++)
+            for (int dx = -1; dx <= 1; dx++)
+                if ((dx != 0 || dy != 0) && (0 <= y + dy && y + dy < getHeight()) && (0 <= x + dx && x + dx < getWidth()))
                     adjacentCells.push_back(grid[y + dy][x + dx]);
 
         return adjacentCells;
