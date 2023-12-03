@@ -31,18 +31,14 @@ string Day3_2023::part1(const string &input) {
 
 	int sum = 0;
 	for (int y = 0; y < grid.getHeight(); y++)
-	{
 		for (int x = 0; x < grid.getWidth(); x++)
-		{
-			if (isdigit(grid[y][x]))
-			{
+			if (isdigit(grid[y][x])) {
 				bool counted = false;
-				for (const auto &adjacent : grid.getAdjacentCells(x, y))
+				for (const auto &adjacent: grid.getAdjacentCells(x, y))
 					if (!isdigit(adjacent) && adjacent != '.')
 						counted = true;
 
-				if (counted)
-				{
+				if (counted) {
 					int numStart = x;
 					int numEnd = x;
 
@@ -59,8 +55,6 @@ string Day3_2023::part1(const string &input) {
 					x = numEnd;
 				}
 			}
-		}
-	}
 
     return to_string(sum);
 }
@@ -127,10 +121,7 @@ string Day3_2023::part2(const string &input)
 	int sum = 0;
 	for (const auto &gear : gearNumbers)
 		if (gear.second.size() == 2)
-		{
-			cout << "[" << gear.second[0] << ", " << gear.second[1] << "]" << endl;
 			sum += (gear.second[0] * gear.second[1]);
-		}
 
 	return to_string(sum);
 }
