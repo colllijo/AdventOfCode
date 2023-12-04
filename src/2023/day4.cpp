@@ -59,63 +59,53 @@ string Day4_2023::part2(const string &input)
 					"Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11";
 
 	int cardsSum = 0;
-	map<int, pair<vector<int>, vector<int>>> cards;
-	vector<pair<int, pair<vector<int>, vector<int>>>> currentCards;
+	map<int, pair<vector<string>, vector<string>>> cards;
+	map<int, int> cardMultiplier;
 
 	stringstream stream(input);
 	string line;
 	while (getline(stream, line, '\n'))
 	{
 		int cardNum = stoi(aoc_string::split(aoc_string::split(line, "Card ")[1], ": ")[0]);
-
 		string nums = aoc_string::split(line, ": ")[1];
-		string winning = aoc_string::split(nums, " | ")[0];
-		string mine = aoc_string::split(nums, " | ")[1];
-
-		vector<int> winningNumbers{};
-		for (const auto &num : aoc_string::split(winning, " "))
-			if (aoc_string::isNumber(num))
-				winningNumbers.emplace_back(stoi(num));
-		vector<int> myNumbers{};
-		for (const auto &num : aoc_string::split(mine, " "))
-			if (aoc_string::isNumber(num))
-				myNumbers.emplace_back(stoi(num));
+		vector<string> winningNumbers = aoc_string::split(aoc_string::split(nums, " | ")[0], " ");
+        winningNumbers.erase(remove_if(winningNumbers.begin(), winningNumbers.end(), [](auto num) {return num.empty(); }), winningNumbers.end());
+		vector<string> myNumbers = aoc_string::split(aoc_string::split(nums, " | ")[1], " ");
+        myNumbers.erase(remove_if(myNumbers.begin(), myNumbers.end(), [](auto num) {return num.empty(); }), myNumbers.end());
 
 		cards[cardNum] = {winningNumbers, myNumbers};
 	}
 
-	for (const auto &card : cards)
-	{
-		currentCards.emplace_back(card);
-		cardsSum++;
-	}
+    for (const auto &card : cards)
+    {
+        int count = 0;
+        for (const auto &num : card.second.second)
+            if (std::find(card.second.first.begin(), card.second.first.end(), num) != card.second.first.end())
+                count++;
 
-	while (!currentCards.empty())
-	{
-		int cardNumber = currentCards[0].first;
-		int copies = accumulate(currentCards.begin(), currentCards.end(), 0, [cardNumber](int acc, auto card){
-			if (card.first == cardNumber)
-				acc++;
+        for (int i = 1; i <= count; i++)
+        {
+            if (cardMultiplier.contains(card.first))
+            {
+                if (cardMultiplier.contains(card.first + i))
+                    cardMultiplier[card.first + i] += cardMultiplier[card.first];
+                else
+                    cardMultiplier[card.first + i] = 1 + cardMultiplier[card.first];
+            }
+            else
+            {
+                if (cardMultiplier.contains(card.first + i))
+                    cardMultiplier[card.first + i]++;
+                else
+                    cardMultiplier[card.first + i] = 2;
+            }
+        }
 
-			return acc;
-		});
-
-		int count = 0;
-		for (const auto &num : currentCards[0].second.second)
-			if (std::find(currentCards[0].second.first.begin(), currentCards[0].second.first.end(), num) != currentCards[0].second.first.end())
-				count++;
-
-		currentCards.erase(remove_if(currentCards.begin(), currentCards.end(), [cardNumber](auto card){ return card.first == cardNumber; }), currentCards.end());
-
-		for (int c = 0; c < copies; c++)
-		{
-			for (int i = 1; i <= count; i++)
-			{
-				currentCards.emplace_back(cardNumber + i, cards[cardNumber + i]);
-				cardsSum++;
-			}
-		}
-	}
+        if (cardMultiplier.contains(card.first))
+            cardsSum += cardMultiplier[card.first];
+        else
+            cardsSum++;
+    }
 
 	return to_string(cardsSum);
 }
