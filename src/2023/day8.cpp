@@ -25,17 +25,11 @@ string Day8_2023::part1(const string &input)
 	while(getline(stream, line, '\n'))
 	{
 		string node = aoc_string::split(line, " = ")[0];
-
 		nodes[node] = {aoc_string::split(aoc_string::split(aoc_string::split(line, "(")[1], ")")[0], ", ")[0], aoc_string::split(aoc_string::split(aoc_string::split(line, "(")[1], ")")[0], ", ")[1]};
 	}
 
 	int steps = 0;
-	do
-	{
-		char direction = directions[steps++ % directions.size()];
-
-		currentNode = direction == 'L' ? nodes[currentNode].first : nodes[currentNode].second;
-	} while (currentNode != "ZZZ");
+    while ((currentNode = directions[steps++ % directions.size()] == 'L' ? nodes[currentNode].first : nodes[currentNode].second) != "ZZZ");
 
     return to_string(steps);
 }
@@ -64,7 +58,6 @@ string Day8_2023::part2(const string &input)
 		string node = aoc_string::split(line, " = ")[0];
 		if (node.ends_with("A"))
 			currentNodes.push_back(node);
-
 		nodes[node] = {aoc_string::split(aoc_string::split(aoc_string::split(line, "(")[1], ")")[0], ", ")[0], aoc_string::split(aoc_string::split(aoc_string::split(line, "(")[1], ")")[0], ", ")[1]};
 	}
 
@@ -72,13 +65,7 @@ string Day8_2023::part2(const string &input)
 	for (auto &start : currentNodes)
 	{
 		int steps = 0;
-		do
-		{
-			char direction = directions[steps++ % directions.size()];
-
-			start = direction == 'L' ? nodes[start].first : nodes[start].second;
-		} while (!start.ends_with("Z"));
-
+        while (!(start = directions[steps++ % directions.size()] == 'L' ? nodes[start].first : nodes[start].second).ends_with("Z"));
 		result = lcm(result, steps);
 	}
 
