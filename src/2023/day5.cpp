@@ -137,13 +137,10 @@ string Day5_2023::part2(const string &input)
 	vector<long> seeds;
 	vector<vector<pair<range, range>>> maps;
 
-	for (const auto &part : aoc_string::split(_input, "\n\n"))
-	{
+	for (const auto &part : aoc_string::split(input, "\n\n"))
 		if (part.starts_with("seeds:"))
-		{
 			for (const auto & seed : aoc_string::split(aoc_string::split(part, ": ")[1], " "))
 				seeds.emplace_back(stol(seed));
-		}
 		else
 		{
 			vector<pair<range, range>> curMap;
@@ -159,10 +156,9 @@ string Day5_2023::part2(const string &input)
 			}
 			maps.emplace_back(curMap);
 		}
-	}
 
-	for (int i = 0; i <= seeds.size() / 2; i += 2)
-		seedRanges.push_back({seeds[i], seeds[i] + seeds[i + 1] - 1});
+	for (int i = 0; i < seeds.size() / 2; i++)
+		seedRanges.push_back({seeds[i*2], seeds[i*2] + seeds[i*2 + 1] - 1});
 
 	for (const auto &map : maps)
 	{
@@ -190,23 +186,11 @@ string Day5_2023::part2(const string &input)
 				}
 			}
 
-			if (!mapped)
-			{
-				mappedRange.push_back(range);
-			}
+			if (!mapped) mappedRange.push_back(range);
 		}
-		cout << "Mapped Ranges:" << endl;
-		for (const auto &range : mappedRange)
-			cout << range.start << "-" << range.end << ", ";
-		cout << endl;
 
 		seedRanges = mappedRange;
 	}
-
-	cout << "Seed Ranges:" << endl;
-	for (const auto &range : seedRanges)
-		cout << range.start << "-" << range.end << endl;
-	cout << endl;
 
     return to_string(accumulate(seedRanges.begin(), seedRanges.end(), LONG_MAX, [](long acc, auto range){ return min(acc, range.start); }));
 }
