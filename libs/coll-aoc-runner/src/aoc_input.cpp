@@ -24,6 +24,8 @@ string AoCInput::getInput(int year, int day)
     if (inputFile && inputFile.is_open())
     {
         input = string((istreambuf_iterator<char>(inputFile)), istreambuf_iterator<char>());
+        if (input.ends_with('\n'))
+            input.pop_back();
         return input;
     }
     else
