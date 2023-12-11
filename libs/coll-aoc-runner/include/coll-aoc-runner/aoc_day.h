@@ -2,6 +2,7 @@
 #define COLL_AOC_RUNNER_AOC_DAY_H
 
 #include <iostream>
+#include <numeric>
 #include <map>
 #include <set>
 #include <string>
