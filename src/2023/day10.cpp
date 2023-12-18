@@ -208,11 +208,11 @@ string Day10_2023::part2(const string &input)
     int enclosed = 0;
     for (size_t y = 0; y < grid.getHeight(); y++)
     {
+        bool inLoop = false;
         for (size_t x = 0; x < grid.getWidth(); x++)
         {
             Pipe &pipe = grid[y][x];
-            bool inLoop = false;
-            for (size_t dx = 0; dx < x; dx++)
+            for (size_t dx = x - 1; dx < x; dx++)
             {
                 Pipe &dPipe = grid[y][dx];
                 if (dPipe.inMainLoop && (dPipe.hasNorth() || dPipe.hasSouth()))
@@ -232,9 +232,9 @@ string Day10_2023::part2(const string &input)
             }
 
             if (inLoop && !pipe.inMainLoop) enclosed++;
-//            printf(inLoop && !pipe.inMainLoop ? "\033[1m\033[31m#\033[0m" : "\033[%sm%c\033[0m", (grid[y][x].isPipe() ? "0" : "1"), (grid[y][x].inMainLoop ? grid[y][x].c : '#'));
+            printf(inLoop && !pipe.inMainLoop ? "\033[1m\033[31m#\033[0m" : "\033[%sm%c\033[0m", (grid[y][x].isPipe() ? "0" : "1"), (grid[y][x].inMainLoop ? grid[y][x].c : '#'));
         }
-//        cout << endl;
+        cout << endl;
     }
 
     return to_string(enclosed);
