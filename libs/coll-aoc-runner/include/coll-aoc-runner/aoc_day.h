@@ -28,6 +28,8 @@ public:
 
     virtual std::string part1(const string &input);
     virtual std::string part2(const string &input);
+
+    string exampleInput{};
 };
 
 #endif

@@ -4,16 +4,15 @@
 
 Day9_2023::Day9_2023():AoCDay(2023, 9)
 {
+    exampleInput = "0 3 6 9 12 15\n"
+                   "1 3 6 10 15 21\n"
+                   "10 13 16 21 30 45";
 }
 
 Day9_2023::~Day9_2023() = default;
 
 string Day9_2023::part1(const string &input)
 {
-    string _input = "0 3 6 9 12 15\n"
-                    "1 3 6 10 15 21\n"
-                    "10 13 16 21 30 45";
-
     vector<vector<long>> lines;
     for (const auto &line : aoc_string::split(input, "\n"))
     {
@@ -38,10 +37,6 @@ string Day9_2023::part1(const string &input)
 
 string Day9_2023::part2(const string &input)
 {
-    string _input = "0 3 6 9 12 15\n"
-                    "1 3 6 10 15 21\n"
-                    "10 13 16 21 30 45";
-
     vector<vector<long>> lines;
     for (const auto &line : aoc_string::split(input, "\n"))
     {

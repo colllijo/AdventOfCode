@@ -27,27 +27,40 @@ void AoCRunner::run(AoCDelimiter* delimiter)
         switch (delimiter->part)
         {
             case 1:
+                if (!day.second->exampleInput.empty())
+                    runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(day.second->exampleInput), true);
                 runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(input));
                 break;
             case 2:
+                if (!day.second->exampleInput.empty())
+                    runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(day.second->exampleInput), true);
                 runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(input));
                 break;
             default:
+                if (!day.second->exampleInput.empty())
+                    runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(day.second->exampleInput), true);
                 runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(input));
+                if (!day.second->exampleInput.empty())
+                    runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(day.second->exampleInput), true);
                 runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(input));
                 break;
         }
     }
 }
 
-void AoCRunner::runPart(AoCDelimiter delimiter, const string &result)
+void AoCRunner::runPart(AoCDelimiter delimiter, const string &result, bool example)
 {
     if (!result.empty())
     {
-        printf("\033[92m*** Part %i of day %i in year %i Result: %s\033[0m\n", delimiter.part, delimiter.day, delimiter.year, result.c_str());
+        if (example)
+            printf("*** Part %i of day %i in year %i Example Result: %s\n", delimiter.part, delimiter.day, delimiter.year, result.c_str());
+        else
+        {
+            printf("\033[92m*** Part %i of day %i in year %i Result: %s\033[0m\n", delimiter.part, delimiter.day, delimiter.year, result.c_str());
 
-        string clipCommand = "echo -n " + result + " | clip.exe";
-        system(clipCommand.c_str());
+            string clipCommand = "echo -n " + result + " | clip.exe";
+            system(clipCommand.c_str());
+        }
     }
 }
 

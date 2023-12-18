@@ -17,7 +17,7 @@ private:
     AoCInput* aocInput;
 
     map<int, AoCDay*> getDaysToRun(AoCDelimiter* delimiter);
-    static void runPart(AoCDelimiter delimiter, const string &result);
+    static void runPart(AoCDelimiter delimiter, const string &result, bool example = false);
 public:
     explicit AoCRunner(const function<void(AoCYears*)>& setYears);
     ~AoCRunner();
