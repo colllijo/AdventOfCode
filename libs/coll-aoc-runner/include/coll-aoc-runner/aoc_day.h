@@ -26,10 +26,11 @@ public:
     [[nodiscard]] int getYear() const { return year; }
     [[nodiscard]] int getDay() const { return day; }
 
-    virtual std::string part1(const string &input);
-    virtual std::string part2(const string &input);
+    virtual std::string part1(const string &input, bool example);
+    virtual std::string part2(const string &input, bool example);
 
     string exampleInput{};
+    void setExampleInput(const string& example) { exampleInput = example; };
 };
 
 #endif

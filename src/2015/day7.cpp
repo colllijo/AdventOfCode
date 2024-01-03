@@ -6,7 +6,7 @@ Day7_2015::Day7_2015():AoCDay(2015, 7)
 
 Day7_2015::~Day7_2015() = default;
 
-string Day7_2015::part1(const string &input)
+string Day7_2015::part1(const string &input, bool example)
 {
     map<string, unsigned short> wires;
     map<vector<string>, string> gates;
@@ -94,7 +94,7 @@ string Day7_2015::part1(const string &input)
     return to_string(wires["a"]);
 }
 
-string Day7_2015::part2(const string &input)
+string Day7_2015::part2(const string &input, bool example)
 {
     map<string, unsigned short> wires;
     map<vector<string>, string> gates;
@@ -127,7 +127,7 @@ string Day7_2015::part2(const string &input)
 
                     // Override b with the value of a from part 1
                     if (iter->second == "b")
-                        lvalue = (unsigned short) stoi(part1(input));
+                        lvalue = (unsigned short) stoi(part1(input, example));
 
                     wires[iter->second] = lvalue;
                     iter = gates.erase(iter);

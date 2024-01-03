@@ -6,7 +6,7 @@ Day13_2015::Day13_2015():AoCDay(2015, 13)
 
 Day13_2015::~Day13_2015() = default;
 
-string Day13_2015::part1(const string &input)
+string Day13_2015::part1(const string &input, bool example)
 {
     int maxHappiness = INT32_MIN;
 
@@ -56,7 +56,7 @@ string Day13_2015::part1(const string &input)
     return to_string(maxHappiness);
 }
 
-string Day13_2015::part2(const string &input)
+string Day13_2015::part2(const string &input, bool example)
 {
     int maxHappiness = INT32_MIN;
 

@@ -24,26 +24,17 @@ void AoCRunner::run(AoCDelimiter* delimiter)
         // Get aocInput for day
         string input = this->aocInput->getInput(day.second->getYear(), day.second->getDay());
 
-        switch (delimiter->part)
+        if (delimiter->part != 2)
         {
-            case 1:
-                if (!day.second->exampleInput.empty())
-                    runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(day.second->exampleInput), true);
-                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(input));
-                break;
-            case 2:
-                if (!day.second->exampleInput.empty())
-                    runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(day.second->exampleInput), true);
-                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(input));
-                break;
-            default:
-                if (!day.second->exampleInput.empty())
-                    runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(day.second->exampleInput), true);
-                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(input));
-                if (!day.second->exampleInput.empty())
-                    runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(day.second->exampleInput), true);
-                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(input));
-                break;
+            if (!day.second->exampleInput.empty())
+                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(day.second->exampleInput, true), true);
+            runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 1), day.second->part1(input, false));
+        }
+        if (delimiter->part != 1)
+        {
+            if (!day.second->exampleInput.empty())
+                runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(day.second->exampleInput, true), true);
+            runPart(AoCDelimiter(day.second->getYear(), day.second->getDay(), 2), day.second->part2(input, false));
         }
     }
 }

@@ -8,7 +8,7 @@ Day4_2015::Day4_2015():AoCDay(2015, 4)
 
 Day4_2015::~Day4_2015() = default;
 
-string Day4_2015::part1(const string &input)
+string Day4_2015::part1(const string &input, bool example)
 {
     static unsigned int result = 0;
     auto hasher = [](const string &input, unsigned int start, int increment)
@@ -49,7 +49,7 @@ string Day4_2015::part1(const string &input)
     return std::to_string(result);
 }
 
-string Day4_2015::part2(const string &input)
+string Day4_2015::part2(const string &input, bool example)
 {
     static unsigned int result = 0;
     auto hasher = [](const string &input, unsigned int start, int increment)

@@ -6,7 +6,7 @@ Day8_2015::Day8_2015():AoCDay(2015, 8)
 
 Day8_2015::~Day8_2015() = default;
 
-string Day8_2015::part1(const string &input)
+string Day8_2015::part1(const string &input, bool example)
 {
     int codeChars = 0;
     int memoryChars = 0;
@@ -36,7 +36,7 @@ string Day8_2015::part1(const string &input)
     return to_string(codeChars - memoryChars);
 }
 
-string Day8_2015::part2(const string &input)
+string Day8_2015::part2(const string &input, bool example)
 {
     int codeChars = 0;
     int encodedChars = 0;

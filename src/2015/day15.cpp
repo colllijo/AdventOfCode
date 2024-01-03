@@ -48,7 +48,7 @@ vector<vector<int>> print_partitions(int sum, int n) {
     }
 }
 
-string Day15_2015::part1(const string &input)
+string Day15_2015::part1(const string &input, bool example)
 {
     vector<map<string, int>> ingredients;
 
@@ -103,7 +103,7 @@ string Day15_2015::part1(const string &input)
     return to_string(maxScore);
 }
 
-string Day15_2015::part2(const string &input)
+string Day15_2015::part2(const string &input, bool example)
 {
     vector<map<string, int>> ingredients;
 

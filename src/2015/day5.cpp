@@ -8,7 +8,7 @@ Day5_2015::Day5_2015():AoCDay(2015, 5)
 
 Day5_2015::~Day5_2015() = default;
 
-string Day5_2015::part1(const string &input)
+string Day5_2015::part1(const string &input, bool example)
 {
     int goodStrings = 0;
 
@@ -66,7 +66,7 @@ string Day5_2015::part1(const string &input)
     return to_string(goodStrings);
 }
 
-string Day5_2015::part2(const string &input)
+string Day5_2015::part2(const string &input, bool example)
 {
     int goodStrings = 0;
 

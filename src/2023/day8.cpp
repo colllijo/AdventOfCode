@@ -8,7 +8,7 @@ Day8_2023::Day8_2023():AoCDay(2023, 8)
 
 Day8_2023::~Day8_2023() = default;
 
-string Day8_2023::part1(const string &input)
+string Day8_2023::part1(const string &input, bool example)
 {
 	string _input = "LLR\n"
 					"\n"
@@ -34,7 +34,7 @@ string Day8_2023::part1(const string &input)
     return to_string(steps);
 }
 
-string Day8_2023::part2(const string &input)
+string Day8_2023::part2(const string &input, bool example)
 {
 	string _input = "LR\n"
 					"\n"

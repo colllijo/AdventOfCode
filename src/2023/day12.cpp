@@ -43,7 +43,7 @@ long count(const string &s, int i, int j, int len, const vector<int>& groups, un
     return res;
 }
 
-string Day12_2023::part1(const string &input)
+string Day12_2023::part1(const string &input, bool example)
 {
     long result = 0;
 
@@ -62,7 +62,7 @@ string Day12_2023::part1(const string &input)
     return to_string(result);
 }
 
-string Day12_2023::part2(const string &input)
+string Day12_2023::part2(const string &input, bool example)
 {
     long result = 0;
 

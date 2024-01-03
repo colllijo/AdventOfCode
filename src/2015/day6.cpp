@@ -8,7 +8,7 @@ Day6_2015::Day6_2015():AoCDay(2015, 6)
 
 Day6_2015::~Day6_2015() = default;
 
-string Day6_2015::part1(const string &input)
+string Day6_2015::part1(const string &input, bool example)
 {
     int squareSize = 1000;
     vector<vector<bool>> lights(squareSize, vector<bool>(squareSize, false));
@@ -63,7 +63,7 @@ string Day6_2015::part1(const string &input)
     return to_string(burningLights);
 }
 
-string Day6_2015::part2(const string &input)
+string Day6_2015::part2(const string &input, bool example)
 {
     int squareSize = 1000;
     vector<vector<int>> lights(squareSize, vector<int>(squareSize, 0));

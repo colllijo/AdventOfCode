@@ -33,7 +33,7 @@ int getJsonValue(const Json::Value& json, const string& ignore = "")
     return sum;
 }
 
-string Day12_2015::part1(const string &input)
+string Day12_2015::part1(const string &input, bool example)
 {
     Json::Value root;
     Json::Reader reader;
@@ -47,7 +47,7 @@ string Day12_2015::part1(const string &input)
     return to_string(getJsonValue(root));
 }
 
-string Day12_2015::part2(const string &input)
+string Day12_2015::part2(const string &input, bool example)
 {
     Json::Value root;
     Json::Reader reader;

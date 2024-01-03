@@ -8,8 +8,8 @@ public:
     Day();
     ~Day();
 
-    string part1(const string &input) override;
-    string part2(const string &input) override;
+    string part1(const string &input, bool example) override;
+    string part2(const string &input, bool example) override;
 };
 
 #endif

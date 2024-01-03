@@ -6,7 +6,7 @@ Day9_2015::Day9_2015():AoCDay(2015, 9)
 
 Day9_2015::~Day9_2015() = default;
 
-string Day9_2015::part1(const string &input)
+string Day9_2015::part1(const string &input, bool example)
 {
     int shortestRoute = 2147483647;
 
@@ -45,7 +45,7 @@ string Day9_2015::part1(const string &input)
     return to_string(shortestRoute);
 }
 
-string Day9_2015::part2(const string &input)
+string Day9_2015::part2(const string &input, bool example)
 {
     int longestRoute = 0;
 

@@ -6,7 +6,7 @@ Day14_2015::Day14_2015():AoCDay(2015, 14)
 
 Day14_2015::~Day14_2015() = default;
 
-string Day14_2015::part1(const string &input)
+string Day14_2015::part1(const string &input, bool example)
 {
     int longestDistance = 0;
 
@@ -28,7 +28,7 @@ string Day14_2015::part1(const string &input)
     return to_string(longestDistance);
 }
 
-string Day14_2015::part2(const string &input)
+string Day14_2015::part2(const string &input, bool example)
 {
     vector<int> points;
     map<string, vector<int>> reindeer;

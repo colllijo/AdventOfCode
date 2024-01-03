@@ -27,7 +27,7 @@ struct Hand
     int bid;
 };
 
-string Day7_2023::part1(const string &input)
+string Day7_2023::part1(const string &input, bool example)
 {
     string _input = "32T3K 765\n"
                     "T55J5 684\n"
@@ -79,7 +79,7 @@ string Day7_2023::part1(const string &input)
     return to_string(sum);
 }
 
-string Day7_2023::part2(const string &input)
+string Day7_2023::part2(const string &input, bool example)
 {
     string _input = "32T3K 765\n"
                     "T55J5 684\n"

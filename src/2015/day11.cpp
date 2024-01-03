@@ -53,7 +53,7 @@ bool validatePassword(const string& password)
     return street && pairs >= 2;
 }
 
-string Day11_2015::part1(const string &input)
+string Day11_2015::part1(const string &input, bool example)
 {
     string password = aoc_string::split(input, "\n").at(0);
 
@@ -65,9 +65,9 @@ string Day11_2015::part1(const string &input)
     return password;
 }
 
-string Day11_2015::part2(const string &input)
+string Day11_2015::part2(const string &input, bool example)
 {
-    string password = part1(input);
+    string password = part1(input, example);
 
     do
     {

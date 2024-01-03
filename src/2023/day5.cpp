@@ -8,7 +8,7 @@ Day5_2023::Day5_2023():AoCDay(2023, 5)
 
 Day5_2023::~Day5_2023() = default;
 
-string Day5_2023::part1(const string &input)
+string Day5_2023::part1(const string &input, bool example)
 {
 	string _input = "seeds: 79 14 55 13\n"
 					"\n"
@@ -97,7 +97,7 @@ struct range {
 	long end;
 };
 
-string Day5_2023::part2(const string &input)
+string Day5_2023::part2(const string &input, bool example)
 {
 	string _input = "seeds: 79 14 55 13\n"
 					"\n"

@@ -33,7 +33,7 @@ string lookAndSay(const string &input)
     return result + to_string(repetitions) + currentDigit;
 }
 
-string Day10_2015::part1(const string &input)
+string Day10_2015::part1(const string &input, bool example)
 {
     string result = input;
 
@@ -43,7 +43,7 @@ string Day10_2015::part1(const string &input)
     return to_string(result.length());
 }
 
-string Day10_2015::part2(const string &input)
+string Day10_2015::part2(const string &input, bool example)
 {
     string result = input;
 

@@ -8,7 +8,7 @@ Day3_2023::Day3_2023():AoCDay(2023, 3)
 
 Day3_2023::~Day3_2023() = default;
 
-string Day3_2023::part1(const string &input) {
+string Day3_2023::part1(const string &input, bool example) {
 	string _input = "467..114..\n"
 					"...*......\n"
 					"..35..633.\n"
@@ -59,7 +59,7 @@ string Day3_2023::part1(const string &input) {
     return to_string(sum);
 }
 
-string Day3_2023::part2(const string &input)
+string Day3_2023::part2(const string &input, bool example)
 {
 	string _input = "467..114..\n"
 					"...*......\n"

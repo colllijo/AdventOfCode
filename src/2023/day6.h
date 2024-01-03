@@ -8,8 +8,8 @@ public:
     Day6_2023();
     ~Day6_2023();
 
-    string part1(const string &input) override;
-    string part2(const string &input) override;
+    string part1(const string &input, bool example) override;
+    string part2(const string &input, bool example) override;
 };
 
 #endif

@@ -9,7 +9,7 @@ Day4_2023::Day4_2023():AoCDay(2023, 4)
 
 Day4_2023::~Day4_2023() = default;
 
-string Day4_2023::part1(const string &input)
+string Day4_2023::part1(const string &input, bool example)
 {
 	string _input = "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53\n"
 					"Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19\n"
@@ -49,7 +49,7 @@ string Day4_2023::part1(const string &input)
     return to_string(sum);
 }
 
-string Day4_2023::part2(const string &input)
+string Day4_2023::part2(const string &input, bool example)
 {
 	string _input = "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53\n"
 					"Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19\n"

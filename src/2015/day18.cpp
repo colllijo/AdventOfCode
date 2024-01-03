@@ -8,7 +8,7 @@ Day18_2015::Day18_2015():AoCDay(2015, 18)
 
 Day18_2015::~Day18_2015() = default;
 
-string Day18_2015::part1(const string &input)
+string Day18_2015::part1(const string &input, bool example)
 {
     AoC2DGrid<char> grid(100, 100);
     AoC2DGrid<char> updatedGrid(100, 100);
@@ -58,7 +58,7 @@ string Day18_2015::part1(const string &input)
     return to_string(lights);
 }
 
-string Day18_2015::part2(const string &input)
+string Day18_2015::part2(const string &input, bool example)
 {
     AoC2DGrid<char> grid(100, 100);
     AoC2DGrid<char> updatedGrid(100, 100);

@@ -73,7 +73,7 @@ public:
     [[nodiscard]] bool hasWest() const { return directions & WEST; }
 };
 
-string Day10_2023::part1(const string &input)
+string Day10_2023::part1(const string &input, bool example)
 {
     AoC2DGrid<Pipe> grid((int) aoc_string::split(input, "\n")[0].size(), (int) aoc_string::split(input, "\n").size());
     Coordinate start{};
@@ -139,7 +139,7 @@ string Day10_2023::part1(const string &input)
     return to_string(distance / 2);
 }
 
-string Day10_2023::part2(const string &input)
+string Day10_2023::part2(const string &input, bool example)
 {
     AoC2DGrid<Pipe> grid((int) aoc_string::split(input, "\n")[0].size(), (int) aoc_string::split(input, "\n").size());
     Coordinate start{};

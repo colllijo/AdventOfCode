@@ -6,7 +6,7 @@ Day19_2015::Day19_2015():AoCDay(2015, 19)
 
 Day19_2015::~Day19_2015() = default;
 
-string Day19_2015::part1(const string &input)
+string Day19_2015::part1(const string &input, bool example)
 {
     vector<pair<string, string>> replacements;
     string molecule;
@@ -48,7 +48,7 @@ string Day19_2015::part1(const string &input)
     return to_string(possibleMolecules.size());
 }
 
-string Day19_2015::part2(const string &input)
+string Day19_2015::part2(const string &input, bool example)
 {
     string _input = "e => H\n"
                     "e => O\n"

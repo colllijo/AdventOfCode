@@ -6,7 +6,7 @@ Day2_2015::Day2_2015():AoCDay(2015, 2)
 
 Day2_2015::~Day2_2015() = default;
 
-string Day2_2015::part1(const string &input)
+string Day2_2015::part1(const string &input, bool example)
 {
     unsigned int squareFeetOfPaper = 0;
 
@@ -36,7 +36,7 @@ string Day2_2015::part1(const string &input)
     return std::to_string(squareFeetOfPaper);
 }
 
-string Day2_2015::part2(const string &input)
+string Day2_2015::part2(const string &input, bool example)
 {
 
     unsigned int lengthOfRibbon = 0;

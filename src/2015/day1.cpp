@@ -6,7 +6,7 @@ Day1_2015::Day1_2015():AoCDay(2015, 1)
 
 Day1_2015::~Day1_2015() = default;
 
-string Day1_2015::part1(const string &input)
+string Day1_2015::part1(const string &input, bool example)
 {
     int floor = 0;
 
@@ -27,7 +27,7 @@ string Day1_2015::part1(const string &input)
     return std::to_string(floor);
 }
 
-string Day1_2015::part2(const string &input)
+string Day1_2015::part2(const string &input, bool example)
 {
     int floor = 0;
     int charIndex = 0;

@@ -6,7 +6,7 @@ Day2_2023::Day2_2023():AoCDay(2023, 2)
 
 Day2_2023::~Day2_2023() = default;
 
-string Day2_2023::part1(const string &input)
+string Day2_2023::part1(const string &input, bool example)
 {
 	int sum = 0;
 	string _input = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green\n"
@@ -50,7 +50,7 @@ string Day2_2023::part1(const string &input)
     return to_string(sum);
 }
 
-string Day2_2023::part2(const string &input)
+string Day2_2023::part2(const string &input, bool example)
 {
 	int sum = 0;
 	string _input = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green\n"

@@ -15,7 +15,7 @@ struct Aunt
     map<string, int> properties;
 };
 
-string Day16_2015::part1(const string &input)
+string Day16_2015::part1(const string &input, bool example)
 {
     vector<Aunt> aunts;
 
@@ -64,7 +64,7 @@ string Day16_2015::part1(const string &input)
     return "Not found";
 }
 
-string Day16_2015::part2(const string &input)
+string Day16_2015::part2(const string &input, bool example)
 {
     vector<Aunt> aunts;
 

@@ -6,7 +6,7 @@ Day3_2015::Day3_2015():AoCDay(2015, 3)
 
 Day3_2015::~Day3_2015() = default;
 
-string Day3_2015::part1(const string &input)
+string Day3_2015::part1(const string &input, bool example)
 {
     std::map<std::tuple<int, int>, bool> map;
     int x = 0;
@@ -40,7 +40,7 @@ string Day3_2015::part1(const string &input)
     return std::to_string(map.size());
 }
 
-string Day3_2015::part2(const string &input)
+string Day3_2015::part2(const string &input, bool example)
 {
     std::map<std::tuple<int, int>, bool> map;
     int santaX = 0;

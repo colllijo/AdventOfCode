@@ -18,13 +18,13 @@ const map<string, char> spelledNumbers {
         {"nine", '9'},
 };
 
-string Day1_2023::part1(const string &input)
+string Day1_2023::part1(const string &input, bool example)
 {
 	vector<string> lines = aoc_string::split(input, "\n");
     return to_string(accumulate(lines.begin(), lines.end(), 0, [](int acc, string line){ return acc + ((10 * (accumulate(line.begin(),line.end(), '\0', [](char acc, char c){ return (acc == '\0' &&isdigit(c) ? c : acc); }) - '0')) + accumulate(line.begin(),line.end(), '\0', [](char acc, char c){ return (isdigit(c) ? c : acc); }) - '0'); }));
 }
 
-string Day1_2023::part2(const string &input)
+string Day1_2023::part2(const string &input, bool example)
 {
     vector<string> lines = aoc_string::split(input, "\n");
     return to_string(accumulate(lines.begin(), lines.end(), 0, [](int acc, string line){

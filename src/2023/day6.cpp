@@ -8,7 +8,7 @@ Day6_2023::Day6_2023():AoCDay(2023, 6)
 
 Day6_2023::~Day6_2023() = default;
 
-string Day6_2023::part1(const string &input)
+string Day6_2023::part1(const string &input, bool example)
 {
 	string _input = "Time:      7  15   30\n"
 					"Distance:  9  40  200";
@@ -52,7 +52,7 @@ string Day6_2023::part1(const string &input)
     return to_string(result);
 }
 
-string Day6_2023::part2(const string &input)
+string Day6_2023::part2(const string &input, bool example)
 {
 	string _input = "Time:      7  15   30\n"
 					"Distance:  9  40  200";

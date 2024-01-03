@@ -9,7 +9,7 @@ Day17_2015::Day17_2015():AoCDay(2015, 17)
 
 Day17_2015::~Day17_2015() = default;
 
-string Day17_2015::part1(const string &input)
+string Day17_2015::part1(const string &input, bool example)
 {
     vector<int> containers;
 
@@ -39,7 +39,7 @@ string Day17_2015::part1(const string &input)
     return to_string(combinations(150, containers));
 }
 
-string Day17_2015::part2(const string &input)
+string Day17_2015::part2(const string &input, bool example)
 {
     vector<int> containers;
 
